@@ -1,4 +1,6 @@
-export class User {
+import { Followable } from "../interfaces/Followable";
+
+export class User implements Followable {
   constructor(
     private id: number,
     private name: string,
