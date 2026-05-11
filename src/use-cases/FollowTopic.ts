@@ -14,6 +14,13 @@ export class FollowTopicUseCase {
     const follower = await this.userRepo.findById(followerId);
     const topic = await this.topicRepo.findById(topicId);
 
+    if (!follower) throw new Error("User does not exist!");
+    if (!topic) throw new Error("Topic does not exist!");
+
+    const existing = await this.followRepo.find(followerId, topicId);
+    if (existing)
+      throw new Error("You cannot follow the same topic more than once!");
+
     const newFollow = new Follow(0, follower, topic, "topic", new Date());
     await this.followRepo.save(newFollow);
   }

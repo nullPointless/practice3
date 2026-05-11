@@ -12,4 +12,8 @@ export class Topic implements Followable {
   getId(): number {
     return this.id;
   }
+
+  getCreator(): User {
+    return this.creator;
+  }
 }
