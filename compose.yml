@@ -1,0 +1,10 @@
+services:
+  backend:
+    ports: -3000:3000
+
+  db:
+    image: postgres:18.3-alpine3.23
+    ports: -8080:8080
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: example
