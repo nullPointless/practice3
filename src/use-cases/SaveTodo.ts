@@ -17,6 +17,10 @@ export class SaveTodoUseCase {
     const todo = await this.todoRepo.findById(todoId);
     const lib = await this.libRepo.findById(libId);
 
+    if (!user) throw new Error("User not found");
+    if (!todo) throw new Error("Todo not found");
+    if (!lib) throw new Error("Library not found");
+
     const newSave = new Save(0, user, todo, lib, new Date());
     await this.saveRepo.save(newSave);
   }

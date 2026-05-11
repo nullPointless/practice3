@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 export class FollowTopicHandler {
   constructor(private followTopicUseCase: FollowTopicUseCase) {}
 
-  async handle(req: Request, res: Response) {
+  async handler(req: Request, res: Response) {
     try {
       const { followerId, topicId } = req.body;
       const response = await this.followTopicUseCase.execute(
